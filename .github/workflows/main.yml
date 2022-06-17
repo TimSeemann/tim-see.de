@@ -27,6 +27,5 @@ jobs:
     
       - uses: actions/checkout@v3
       - name: change directory
-        working-directory: /var/www/html/
-        run: lol
+        run: mv ./ test/
  
