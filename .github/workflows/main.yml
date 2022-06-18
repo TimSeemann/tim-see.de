@@ -31,5 +31,5 @@ jobs:
               cd 
               rm -r test/
               #mkdir test/
-              mv actions-runner/_work/tim-see.de/ test/
+              cp actions-runner/_work/tim-see.de/ test/
  
