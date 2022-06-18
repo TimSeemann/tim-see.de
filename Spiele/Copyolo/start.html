@@ -5,7 +5,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Copyolo</title>
-    
+    <script type="text/javascript">
+      var spieler = [];
+      
+      function addPlayer(name){
+                spieler.push(name);
+                refresh();
+        }
+      function refresh(){
+        var erg = "";
+        for(var i=0;i<spieler.length;i++){
+          erg=erg+spieler[i]+"\n";
+        }
+        document.getElementById('player').textContent = erg;
+      }
+  </script>
   </head>
   <body>
     <p><a>Teilnehmer:</a></p>
@@ -14,12 +28,7 @@
         <input type="text" id="pName" name="pName">
         <input type="submit" value="hinzufügen">
     </form></a></p>
-    <script type="text/javascript">
-        function addPlayer(name){
-                document.getElementById('p1').textContent = name;
-        }
-    </script>
-    <p><a id="p1">hi</a></p>
+    <p id="player"><a>Noch keine Spieler</a></p>
     <p><button>Start</button></p>
     <p><a href="#">Neue Aufgabe hinzufügen</a></p>
   </body>
