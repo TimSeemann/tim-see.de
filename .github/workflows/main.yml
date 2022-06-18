@@ -30,6 +30,6 @@ jobs:
         run: |
               cd 
               rm -r test/ || true
-              #mkdir test/
+              mkdir test/
               cp actions-runner/_work/tim-see.de/tim-see.de/* test/
  
