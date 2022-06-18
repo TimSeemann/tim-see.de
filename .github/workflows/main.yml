@@ -29,7 +29,7 @@ jobs:
       - name: change directory
         run: |
               cd 
-              -rm -r test/
+              rm -r test/ || true
               #mkdir test/
               cp actions-runner/_work/tim-see.de/* test/
  
