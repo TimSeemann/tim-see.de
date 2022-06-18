@@ -29,5 +29,5 @@ jobs:
       - name: change directory
         run: |
               cd 
-              rsync -r --delete --exclude=README.md actions-runner/_work/tim-see.de/tim-see.de/* /var/www/html/
+              sudo rsync -r --delete --exclude=README.md actions-runner/_work/tim-see.de/tim-see.de/* /var/www/html/
  
