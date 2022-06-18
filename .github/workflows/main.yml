@@ -31,5 +31,5 @@ jobs:
               cd 
               rm -r test/ || true
               mkdir test/
-              rsync actions-runner/_work/tim-see.de/tim-see.de/* test/
+              rsync --delete --exclude=README.md actions-runner/_work/tim-see.de/tim-see.de/* test/
  
