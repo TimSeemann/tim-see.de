@@ -1,30 +1,31 @@
 <!doctype html>
 <html lang="de">
   <head>
-    <link rel="icon" href="Grafiken/icon.jpg">
+    <link rel="icon" href="../../Grafiken/icon.jpg">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Copyolo</title>
     <script type="text/javascript">
-      var spieler = [];
-      var fixPunkt = document.getElementById("player");
+      const spieler = [];
       function addPlayer(name){
-                spieler.push(name);
-                var einzufuegendesObjekt = document.createElement('a');
-                var newContent = document.createTextNode(spieler[spieler.length-1]);
-                einzufuegendesObjekt.appendChild(newContent);
-                document.body.insertBefore(einzufuegendesObjekt, fixPunkt);
+        spieler.push(name);
+        let li = document.createElement('li');
+        li.innerHTML=name;
+        document.getElementById("player").appendChild(li);
+        console.log(document.getElementById("player"));
+        document.getElementById("formular").reset();
         }
   </script>
   </head>
   <body>
-    <p><a><form action="javascript:addPlayer(pName.value)">
-        <label for="pName">Spielername</label>
-        <input type="text" id="pName" name="pName">
-        <input type="submit" value="hinzufügen">
-    </form></a></p>
+    <p>
+       <form id="formular" action="javascript:addPlayer(pName.value)">
+          <label for="pName">Spielername</label>
+          <input type="text" id="pName" name="pName">
+          <input type="submit" value="hinzufügen">
+       </form>
     <p><a>Teilnehmer:</a></p>
-    <p><a id="player">Noch keine Spieler</a></p>
+    <p><ul id="player"></ul>
     <p><button>Start</button></p>
     <p><a href="#">Neue Aufgabe hinzufügen</a></p>
   </body>
