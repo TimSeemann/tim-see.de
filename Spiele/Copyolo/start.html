@@ -8,13 +8,23 @@
     <script type="text/javascript">
       const spieler = [];
       function addPlayer(name){
-        spieler.push(name);
-        let li = document.createElement('li');
-        li.innerHTML=name;
-        document.getElementById("player").appendChild(li);
-        console.log(document.getElementById("player"));
-        document.getElementById("formular").reset();
+        if(name!="") {
+          spieler.push(name);
+          let li = document.createElement('li');
+          li.innerHTML = name+"\t";
+          li.id=name;
+          let button = document.createElement("button");
+          button.innerHTML="x";
+          button.setAttribute("onClick","removePlayer(\""+name+"\")");
+          li.appendChild(button);
+          document.getElementById("player").appendChild(li);
+          document.getElementById("formular").reset();
         }
+        }
+      function removePlayer(name){
+        spieler.splice(spieler.indexOf(name),1);
+        document.getElementById(name).remove();
+      }
   </script>
   </head>
   <body>
