@@ -7,28 +7,24 @@
     <title>Copyolo</title>
     <script type="text/javascript">
       var spieler = [];
-      
+      var fixPunkt = document.getElementById("player");
       function addPlayer(name){
                 spieler.push(name);
-                refresh();
+                var einzufuegendesObjekt = document.createElement('a');
+                var newContent = document.createTextNode(spieler[spieler.length-1]);
+                einzufuegendesObjekt.appendChild(newContent);
+                document.body.insertBefore(einzufuegendesObjekt, fixPunkt);
         }
-      function refresh(){
-        var erg = "";
-        for(var i=0;i<spieler.length;i++){
-          erg=erg+spieler[i]+"\n";
-        }
-        document.getElementById('player').textContent = erg;
-      }
   </script>
   </head>
   <body>
-    <p><a>Teilnehmer:</a></p>
     <p><a><form action="javascript:addPlayer(pName.value)">
         <label for="pName">Spielername</label>
         <input type="text" id="pName" name="pName">
         <input type="submit" value="hinzufügen">
     </form></a></p>
-    <p id="player"><a>Noch keine Spieler</a></p>
+    <p><a>Teilnehmer:</a></p>
+    <p><a id="player">Noch keine Spieler</a></p>
     <p><button>Start</button></p>
     <p><a href="#">Neue Aufgabe hinzufügen</a></p>
   </body>
