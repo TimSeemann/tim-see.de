@@ -24,12 +24,17 @@ fclose($handle);
     let elemente = <?php echo json_encode($elemente); ?>;
     const ausgabe = document.getElementById("ausgabe");
     const fak=2;
+    const player=["John","Peter","Jan"];
     function weiter(){
         if(elemente.length!==0) {
             const ran = Math.floor(Math.random() * (elemente.length));
             let befehl =String(elemente[ran]);
-            if(befehl.indexOf("\"")){
-                befehl=transform(befehl,fak);
+            if(befehl.indexOf("\"")!==-1){
+                befehl=transformNumber(befehl,fak);
+            }
+            ausgabe.textConten
+            if(befehl.indexOf("_p_")!==-1){
+                befehl=transformName(befehl);
             }
             ausgabe.textContent = befehl;
             elemente.splice(ran, 1);
@@ -37,12 +42,25 @@ fclose($handle);
         else{
             ausgabe.textContent="Das Spiel ist vorbei :)";
         }
-        function transform(string, faktor){
+        function transformNumber(string, faktor){
             var pos1 = string.indexOf("\"");
             var pos2 = string.lastIndexOf("\"");
             var alt = string.substring(pos1, pos2 + 1);
             var neu = parseInt(string.substring(pos1 + 1, pos2)) * faktor;
             return string.replace(alt, neu);
+        }
+        function transformName(string){
+            let count = 0;
+            let pos = string.indexOf('_p_');
+            while (pos !== -1) {
+                count++;
+                pos = string.indexOf('_p_', pos + 1);
+            }
+            while(string.indexOf("_p_")!==-1) {
+                string = string.replace("_p_",player[count]);
+                count--;
+            }
+            return string;
         }
     }
 </script>
