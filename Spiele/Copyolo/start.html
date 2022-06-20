@@ -1,31 +1,42 @@
 <!doctype html>
 <html lang="de">
-  <head>
-    <link rel="icon" href="Grafiken/icon.jpg">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copyolo</title>
-    <script type="text/javascript">
-      var spieler = [];
-      var fixPunkt = document.getElementById("player");
-      function addPlayer(name){
-                spieler.push(name);
-                var einzufuegendesObjekt = document.createElement('a');
-                var newContent = document.createTextNode(spieler[spieler.length-1]);
-                einzufuegendesObjekt.appendChild(newContent);
-                document.body.insertBefore(einzufuegendesObjekt, fixPunkt);
-        }
+<head>
+  <link rel="icon" href="../../Grafiken/icon.jpg">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copyolo</title>
+  <script type="text/javascript">
+    const spieler = [];
+    function addPlayer(name){
+      if(name!=="") {
+        spieler.push(name);
+        let li = document.createElement('li');
+        li.innerHTML = name+"\n";
+        li.id=name;
+        let button = document.createElement("button");
+        button.innerHTML="x";
+        button.setAttribute("onClick","removePlayer(\""+name+"\")");
+        li.appendChild(button);
+        document.getElementById("player").appendChild(li);
+        document.getElementById("formular").reset();
+      }
+    }
+    function removePlayer(name){
+      spieler.splice(spieler.indexOf(name),1);
+      document.getElementById(name).remove();
+    }
   </script>
-  </head>
-  <body>
-    <p><a><form action="javascript:addPlayer(pName.value)">
-        <label for="pName">Spielername</label>
-        <input type="text" id="pName" name="pName">
-        <input type="submit" value="hinzufügen">
-    </form></a></p>
-    <p><a>Teilnehmer:</a></p>
-    <p><a id="player">Noch keine Spieler</a></p>
-    <p><button>Start</button></p>
-    <p><a href="#">Neue Aufgabe hinzufügen</a></p>
-  </body>
+</head>
+<body>
+<p>
+<form id="formular" action="javascript:addPlayer(pName.value)">
+  <label for="pName">Spielername</label>
+  <input type="text" id="pName" name="pName">
+  <input type="submit" value="hinzufügen">
+</form>
+<p><a>Teilnehmer:</a></p>
+<p><ul id="player"></ul>
+<p><button>Start</button></p>
+<p><a href="#">Neue Aufgabe hinzufügen</a></p>
+</body>
 </html>
