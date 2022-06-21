@@ -50,14 +50,22 @@ fclose($handle);
             return string.replace(alt, neu);
         }
         function transformName(string){
+            const playerAuf = [];
             let count = 0;
             let pos = string.indexOf('_p_');
             while (pos !== -1) {
                 count++;
                 pos = string.indexOf('_p_', pos + 1);
             }
+            for(var i=0;i<=count;i++){
+                let rand = Math.floor(Math.random() * player.length);
+                while(playerAuf.indexOf(player[rand])!==-1){
+                    rand = Math.floor(Math.random() * player.length);
+                }
+                playerAuf.push(player[rand]);
+            }
             while(string.indexOf("_p_")!==-1) {
-                string = string.replace("_p_",player[count]);
+                string = string.replace("_p_",playerAuf[count]);
                 count--;
             }
             return string;
