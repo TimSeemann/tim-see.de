@@ -1,13 +1,11 @@
 <?php
 
 // Datei öffnen, $handle ist der Dateizeiger
-$handle = fopen ('../../Daten/ausgabe/anzahl_0.csv','r');
+$handle = fopen ('../../Daten/ausgabe/normal.csv','r');
 $elemente = array();
-
 while (($line = fgetcsv($handle)) !== FALSE) {
     array_push($elemente,$line);
 }
-
 fclose($handle);
 ?>
 <html lang="de">
@@ -16,6 +14,8 @@ fclose($handle);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Links zu den Unterseiten</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 <p><a id="ausgabe">Jetzt gehts los!!!</a></p>
@@ -24,7 +24,8 @@ fclose($handle);
     let elemente = <?php echo json_encode($elemente); ?>;
     const ausgabe = document.getElementById("ausgabe");
     const fak=2;
-    const player=["John","Peter","Jan"];
+    const player= JSON.parse($.cookie('player'));
+    console.log(player);
     function weiter(){
         if(elemente.length!==0) {
             const ran = Math.floor(Math.random() * (elemente.length));
